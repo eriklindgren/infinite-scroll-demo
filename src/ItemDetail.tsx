@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 interface Item {
   id: string;
@@ -10,6 +10,7 @@ interface Item {
 
 function ItemDetail() {
   const { id } = useParams<{ id: string }>()
+  const navigate = useNavigate()
   const [item, setItem] = useState<Item | null>(null)
   const [loading, setLoading] = useState(true)
 
@@ -46,14 +47,29 @@ function ItemDetail() {
     return (
       <div style={{ padding: '20px' }}>
         <h1>Item not found</h1>
-        <Link to="/">Back to list</Link>
+        <button onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>Back to list</button>
       </div>
     )
   }
 
   return (
     <div style={{ padding: '20px', maxWidth: '800px', margin: '0 auto' }}>
-      <Link to="/" style={{ marginBottom: '20px', display: 'inline-block' }}>← Back to list</Link>
+      <button
+        onClick={() => navigate(-1)}
+        style={{
+          marginBottom: '20px',
+          display: 'inline-block',
+          background: 'none',
+          border: 'none',
+          color: '#0066cc',
+          textDecoration: 'underline',
+          cursor: 'pointer',
+          fontSize: '16px',
+          padding: 0
+        }}
+      >
+        ← Back to list
+      </button>
       <div style={{
         border: '1px solid #ccc',
         borderRadius: '8px',
