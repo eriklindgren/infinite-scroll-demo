@@ -1,6 +1,6 @@
 # Infinite Scroll Demo
 
-A demonstration app showing how to implement infinite scroll with multiple data sources and back button support.
+A vibe-coded demonstration app showing how to implement infinite scroll with multiple data sources and back button support.
 
 ## Features
 
